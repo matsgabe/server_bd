@@ -1,19 +1,26 @@
-const Sequelize = require("sequelize");
-const db = require("../config/database.js");
-const Produto = require("./produto.js");
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database.js');
 
-const Pedido = db.define("pedido", {
-  nom_pedido: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-  },
-  qtde_pedido: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
+const Pedido = sequelize.define('Pedido', {
+    num_pedido: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    cod_produto: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    qtde_pedido: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            min: 1
+        }
+    }
+}, {
+    tableName: 'pedidos',
+    timestamps: true
 });
-
-Pedido.belongsTo(Produto, { foreignKey: "cod_produto" });
 
 module.exports = Pedido;
