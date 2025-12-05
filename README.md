@@ -22,6 +22,6 @@ npm run dev
 # 7. Resetar e popular novamente
 node seed-dados.js
 
-criar-banco.js só precisa rodar UMA VEZ (cria o banco vazio)
-seed-dados.js você roda quando quiser popular/resetar os dados
-npm run dev é para iniciar o servidor sempre que for testar
+* criar-banco.js só precisa rodar UMA VEZ (cria o banco vazio)
+* seed-dados.js você roda quando quiser popular/resetar os dados
+* npm run dev é para iniciar o servidor sempre que for testar
