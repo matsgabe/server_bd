@@ -5,15 +5,15 @@ const produtoController = require('./controllers/produtoController');
 async function popularDados() {
     try {
         await sequelize.authenticate();
-        console.log('✅ Conectado ao banco!\n');
+        console.log('Conectado ao banco!\n');
 
         await sequelize.sync({ force: true });
-        console.log('🗑️  Banco resetado!\n');
+        console.log('Banco resetado!\n');
 
         const cat1 = await Categoria.create({ nome_categoria: 'Eletrônicos' });
         const cat2 = await Categoria.create({ nome_categoria: 'Alimentos' });
         const cat3 = await Categoria.create({ nome_categoria: 'Vestuário' });
-        console.log('✅ Categorias criadas!\n');
+        console.log('Categorias criadas!\n');
 
         const produtos = [
             { nome_produto: 'Mouse Gamer', qtde_produto: 2, id_categoria: cat1.id_categoria },
@@ -39,13 +39,13 @@ async function popularDados() {
                 
                 let statusPedido = '';
                 if (produto.qtde_produto <= 3) {
-                    statusPedido = ' → Pedido de 4 unidades criado';
+                    statusPedido = ' Pedido de 4 unidades criado';
                     totalPedidos++;
                 } else if (produto.qtde_produto > 3 && produto.qtde_produto < 7) {
-                    statusPedido = ' → Pedido de 3 unidades criado';
+                    statusPedido = ' Pedido de 3 unidades criado';
                     totalPedidos++;
                 } else {
-                    statusPedido = ' → Estoque OK (sem pedido)';
+                    statusPedido = ' Estoque OK (sem pedido)';
                 }
                 
                 console.log(`   ${produto.nome_produto} (Qtd: ${produto.qtde_produto})${statusPedido}`);

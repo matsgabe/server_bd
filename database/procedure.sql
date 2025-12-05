@@ -13,7 +13,6 @@ BEGIN
     DECLARE v_total_pedidos INT DEFAULT 0;
     DECLARE done INT DEFAULT FALSE;
     
-    -- Cursor para percorrer produtos da categoria
     DECLARE cur_produtos CURSOR FOR 
         SELECT cod_produto, nome_produto, qtde_produto 
         FROM produtos 
