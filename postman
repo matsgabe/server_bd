@@ -1,0 +1,59 @@
+*POST /api/auth/registrar - Criar usuário*
+-- curl -X POST http://localhost:3000/api/auth/registrar \
+  -H "Content-Type: application/json" \
+  -d "{\"username\":\"admin\",\"password\":\"senha123\",\"email\":\"admin@exemplo.com\"}"
+
+*POST /api/auth/login - Login*
+-- curl -X POST http://localhost:3000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d "{\"username\":\"admin\",\"password\":\"senha123\"}"
+  // copiar o token de login para utilizar em categorias
+
+*GET /api/categorias - Listar categorias*
+-- curl -X GET http://localhost:3000/api/categorias
+
+*POST /api/categorias - Criar categoria (requer JWT)*
+curl -X POST http://localhost:3000/api/categorias \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer SEU_TOKEN_AQUI" \
+  -d "{\"nome_categoria\":\"Brinquedos\"}"
+
+*GET /api/produtos - Listar produtos*
+-- curl -X GET http://localhost:3000/api/produtos
+
+*POST /api/produtos - Criar produto (cria pedido automaticamente)*
+-- curl -X POST http://localhost:3000/api/produtos \
+  -H "Content-Type: application/json" \
+  -d "{\"nome_produto\":\"Headset Gamer\",\"qtde_produto\":2,\"id_categoria\":1}"
+
+*GET /api/produtos/categoria/:id - Produtos por categoria*
+-- # Listar produtos da categoria 1 (Eletrônicos)
+curl -X GET http://localhost:3000/api/produtos/categoria/1
+
+*GET /api/pedidos - Listar pedidos*
+-- curl -X GET http://localhost:3000/api/pedidos
+
+*GET /api/pedidos/quantidade/filtro?min=3&max=5 - Filtrar por quantidade*
+-- curl -X GET "http://localhost:3000/api/pedidos/quantidade/filtro?min=3&max=5"
+
+*PUT http://localhost:3000/api/categorias/1
+Content-Type: application/json
+
+{
+  "nome_categoria": "Eletrônicos Atualizados"
+}
+
+*DELETE http://localhost:3000/api/categorias/1
+
+*PUT http://localhost:3000/api/produtos/1
+Content-Type: application/json
+
+{
+  "nome_produto": "Mouse Gamer RGB",
+  "qtde_produto": 5,
+  "id_categoria": 1
+}
+
+*DELETE http://localhost:3000/api/produtos/1
+
+*DELETE http://localhost:3000/api/pedidos/1

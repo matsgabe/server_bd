@@ -1,4 +1,5 @@
-const { Pedido, Produto, Categoria } = require('../models');
+const { Pedido, Produto, Categoria, sequelize } = require('../models');
+const { Op } = require('sequelize')
 
 exports.listar = async (req, res) => {
     try {
