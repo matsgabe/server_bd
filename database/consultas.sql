@@ -1,3 +1,5 @@
+-- Acessar a database loja_db para validar as consultas
+
 -- CONSULTA 1: Produtos com baixo estoque, suas categorias e pedidos relacionados (3 tabelas)
 -- Objetivo: Identificar produtos críticos e o histórico de reposição
 SELECT 

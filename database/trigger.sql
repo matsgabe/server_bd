@@ -1,23 +1,28 @@
--- Trigger para atualizar automaticamente o estoque quando um pedido é criado
--- Objetivo: Simular que quando um pedido é registrado, o estoque aumenta
+DROP TRIGGER IF EXISTS trigger_atualizar_estoque;
 
-CREATE OR REPLACE FUNCTION atualizar_estoque_apos_pedido()
-RETURNS TRIGGER AS $$
+DELIMITER //
+
+CREATE TRIGGER trigger_atualizar_estoque
+AFTER INSERT ON pedidos
+FOR EACH ROW
 BEGIN
     UPDATE produtos 
     SET qtde_produto = qtde_produto + NEW.qtde_pedido,
         updated_at = NOW()
     WHERE cod_produto = NEW.cod_produto;
-    
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+END//
 
-CREATE TRIGGER trigger_atualizar_estoque
-AFTER INSERT ON pedidos
-FOR EACH ROW
-EXECUTE FUNCTION atualizar_estoque_apos_pedido();
+DELIMITER ;
 
 -- Teste do trigger:
--- Ao inserir um pedido: INSERT INTO pedidos (cod_produto, qtde_pedido) VALUES (1, 4);
--- O estoque do produto 1 será automaticamente incrementado em 4 unidades
+-- Ver o estoque atual de um produto
+-- SELECT cod_produto, nome_produto, qtde_produto FROM produtos WHERE cod_produto = 1;
+
+-- Inserir um pedido
+-- INSERT INTO pedidos (cod_produto, qtde_pedido, created_at, updated_at) VALUES (1, 5, NOW(), NOW());
+
+-- Verificar que o estoque aumentou em 5 unidades
+-- SELECT cod_produto, nome_produto, qtde_produto FROM produtos WHERE cod_produto = 1;
+
+-- Ver o pedido criado
+-- SELECT * FROM pedidos ORDER BY num_pedido DESC LIMIT 1;
