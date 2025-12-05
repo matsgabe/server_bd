@@ -13,8 +13,8 @@ node seed-dados.js
 # 5. Criar as Views, Trigger e Stored Procedure
 # Execute os arquivos SQL no HeidiSQL ou via linha de comando:
 * mysql -u root -p loja_db < database/views.sql
-mysql -u root -p loja_db < database/trigger.sql
-mysql -u root -p loja_db < database/procedure.sql
+* mysql -u root -p loja_db < database/trigger.sql
+* mysql -u root -p loja_db < database/procedure.sql
 
 # 6. Iniciar o servidor
 npm run dev
