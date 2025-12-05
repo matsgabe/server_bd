@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "setup": "node criar-banco.js && node seed-dados.js",
+    "reset": "node seed-dados.js"
   },
   "keywords": [],
   "author": "",
