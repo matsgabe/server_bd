@@ -60,16 +60,9 @@ DELIMITER ;
 
 -- Execução do procedure
 
--- SELECT p.cod_produto, p.nome_produto, p.qtde_produto, c.nome_categoria
--- FROM produtos p
--- JOIN categorias c ON p.id_categoria = c.id_categoria
--- WHERE p.id_categoria = 1;
+-- SELECT p.cod_produto, p.nome_produto, p.qtde_produto, c.nome_categoria FROM produtos p JOIN categorias c ON p.id_categoria = c.id_categoria WHERE p.id_categoria = 1;
 
 -- CALL processar_reposicao_categoria(1);
 
 -- Ver pedidos criados
--- SELECT ped.num_pedido, p.nome_produto, ped.qtde_pedido, ped.created_at
--- FROM pedidos ped
--- JOIN produtos p ON ped.cod_produto = p.cod_produto
--- WHERE p.id_categoria = 1
--- ORDER BY ped.num_pedido DESC;
+-- SELECT ped.num_pedido, p.nome_produto, ped.qtde_pedido, ped.created_at FROM pedidos ped JOIN produtos p ON ped.cod_produto = p.cod_produto WHERE p.id_categoria = 1 ORDER BY ped.num_pedido DESC;
